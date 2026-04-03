@@ -171,7 +171,7 @@
       color: var(--terra-pale); font-weight: 400;
     }
     .projects-header span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(181,98,42,0.15); }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(181,98,42,0.15); }
     .project-card {
       background: #1A1008; padding: 3.5rem;
       position: relative; overflow: hidden; transition: background 0.4s; cursor: pointer;
@@ -251,7 +251,7 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes expandWidth { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
@@ -301,7 +301,7 @@
       <h2>Construindo uma<br><em>nova trajetória</em></h2>
       <p>Brasília, DF. Curso Ciência da Computação na UDF (EAD) e trabalho no varejo enquanto estudo — aproveitando cada intervalo entre clientes para avançar no código.</p>
       <p>Minha transição para TI foi intencional. O objetivo: entrar no mercado tech como desenvolvedora júnior, com foco em desenvolvimento web com Python.</p>
-      <p>Concluí os dois módulos de Lógica de Programação pelo IFRS (Módulo 1 com 88% e Módulo 2 com 75% — 40h no total), além de disciplinas de Engenharia de Prompt e Banco de Dados na UDF. Primeiro app publicado como PWA instalável.</p>
+      <p>Concluí os dois módulos de Lógica de Programação pelo IFRS (Módulo 1 com 88% e Módulo 2 com 75% — 40h no total), além de diversas disciplinas do curso na UDF. Primeiro app publicado como PWA instalável.</p>
       <div class="skills-row">
         <span class="skill-tag">Python</span>
         <span class="skill-tag">HTML & CSS</span>
@@ -350,19 +350,7 @@
         <div class="project-arrow">→</div>
       </div>
 
-      <div class="project-card reveal">
-        <div class="project-num">003</div>
-        <div class="project-icon">🧠</div>
-        <h3 class="project-title">Lógica de Programação</h3>
-        <p class="project-desc">Módulos 1 e 2 concluídos pelo IFRS — 40h no total. Módulo 1 com 88% e Módulo 2 com 75%. Algoritmos em Portugol e estruturas de controle.</p>
-        <div class="project-tags">
-          <span class="project-tag">Portugol</span>
-          <span class="project-tag">Algoritmos</span>
-          <span class="project-tag">IFRS</span>
-          <span class="project-tag">40h</span>
-        </div>
-        <div class="project-arrow">→</div>
-      </div>
+
 
     </div>
   </section>
@@ -402,11 +390,11 @@
         <div class="progress-label">100%</div>
       </div>
       <div class="learning-item">
-        <div class="learning-status">✓ Concluído</div>
+        <div class="learning-status">● Em andamento</div>
         <div class="learning-title">1º Semestre — Ciências da Computação</div>
         <div class="learning-source">UDF — Bacharelado EAD</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-        <div class="progress-label">100%</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+        <div class="progress-label">Em andamento</div>
       </div>
     </div>
   </section>
@@ -417,7 +405,7 @@
     <div class="contact-links reveal">
       <a href="https://instagram.com/e._brito" class="contact-link" target="_blank">Instagram</a>
       <a href="https://github.com/eduardabritox-lab" class="contact-link" target="_blank">GitHub</a>
-      <a href="mailto:seuemail@email.com" class="contact-link">E-mail</a>
+      <a href="/cdn-cgi/l/email-protection#03706676666e626a6f43666e626a6f2d606c6e" class="contact-link">E-mail</a>
     </div>
   </section>
 
@@ -426,7 +414,7 @@
     <span>Brasília, DF — Brasil</span>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     var cursor = document.getElementById('cursor');
     var ring = document.getElementById('cursorRing');
     var mx = 0, my = 0, rx = 0, ry = 0;
@@ -445,11 +433,4 @@
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry, i) {
         if (entry.isIntersecting) {
-          setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(function(el) { observer.observe(el); });
-  </script>
-</body>
-</html>
+          setTimeout(function() { entry.target.classList.add('visible');
