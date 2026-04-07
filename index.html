@@ -8,203 +8,73 @@
   <style>
     :root {
       --cream: #F2E8DC;
-      --warm-white: #F7F0E6;
       --charcoal: #1C1C1A;
       --stone: #9A8878;
       --terra: #B5622A;
       --terra-med: #C97040;
       --terra-light: #E8C4A0;
       --terra-pale: #F0D9C0;
+      --terra-soft: #DBA882;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--charcoal);
-      font-family: 'DM Mono', monospace;
-      font-weight: 300;
-      overflow-x: hidden;
-      cursor: none;
-    }
-    .cursor {
-      width: 8px; height: 8px;
-      background: var(--terra); border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-    }
-    .cursor-ring {
-      width: 32px; height: 32px;
-      border: 1px solid var(--terra); border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9998;
-      transition: transform 0.4s ease; opacity: 0.5;
-    }
+    body { background: var(--cream); color: var(--charcoal); font-family: 'DM Mono', monospace; font-weight: 300; overflow-x: hidden; cursor: none; }
+    .cursor { width: 8px; height: 8px; background: var(--terra); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; }
+    .cursor-ring { width: 32px; height: 32px; border: 1px solid var(--terra); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.4s ease; opacity: 0.5; }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100; padding: 2rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.1rem;
-      color: var(--charcoal); letter-spacing: 0.05em; opacity: 0.7;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--charcoal); letter-spacing: 0.05em; opacity: 0.7; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--charcoal); text-decoration: none; opacity: 0.5; transition: opacity 0.3s;
-    }
+    .nav-links a { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; opacity: 0.5; transition: opacity 0.3s; }
     .nav-links a:hover { opacity: 1; }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
-      position: relative; overflow: hidden;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 8rem 4rem 6rem; position: relative; z-index: 2;
-    }
-    .hero-tag {
-      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--terra); margin-bottom: 2rem;
-      opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
-    }
-    .hero-name {
-      font-family: 'Marcellus', serif;
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
-      line-height: 1.0; letter-spacing: -0.02em;
-      opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
-    }
-    .hero-name em {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-weight: 300; color: var(--terra);
-    }
-    .hero-handle {
-      margin-top: 1.2rem;
-      font-size: 0.7rem; letter-spacing: 0.15em;
-      color: var(--terra-med); opacity: 0;
-      animation: fadeUp 0.8s ease 0.65s forwards;
-    }
-    .hero-desc {
-      margin-top: 1.5rem; font-size: 0.8rem;
-      line-height: 1.9; color: var(--stone); max-width: 320px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
-    }
-    .hero-cta {
-      margin-top: 3rem; display: inline-flex; align-items: center; gap: 1rem;
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--charcoal); text-decoration: none;
-      opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; transition: gap 0.3s;
-    }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 6rem; position: relative; z-index: 2; }
+    .hero-tag { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terra); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .hero-name { font-family: 'Marcellus', serif; font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 1.0; letter-spacing: -0.02em; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+    .hero-name em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; color: var(--terra); }
+    .hero-desc { margin-top: 1.5rem; font-size: 0.8rem; line-height: 1.9; color: var(--stone); max-width: 320px; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
+    .hero-cta { margin-top: 3rem; display: inline-flex; align-items: center; gap: 1rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; transition: gap 0.3s; }
     .hero-cta:hover { gap: 1.5rem; color: var(--terra); }
     .hero-right { position: relative; overflow: hidden; }
-    .hero-visual {
-      position: absolute; inset: 0; background: var(--terra-light);
-      opacity: 0; animation: fadeIn 1.2s ease 0.2s forwards;
-    }
-    .hero-visual::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 30% 60%, rgba(181,98,42,0.35) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(181,98,42,0.2) 0%, transparent 50%);
-    }
-    .hero-grid-lines {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(28,28,26,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(28,28,26,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .hero-number {
-      position: absolute; bottom: 4rem; right: 4rem;
-      font-family: 'Cormorant Garamond', serif; font-size: 8rem;
-      font-weight: 300; color: rgba(181,98,42,0.12); line-height: 1;
-      opacity: 0; animation: fadeIn 1s ease 1s forwards;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 3rem; left: 4rem;
-      display: flex; align-items: center; gap: 0.8rem;
-      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone);
-      opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards;
-    }
-    .scroll-line {
-      width: 40px; height: 1px; background: var(--terra-med);
-      animation: expandWidth 1s ease 1.5s forwards;
-      transform-origin: left; transform: scaleX(0);
-    }
+    .hero-visual { position: absolute; inset: 0; background: var(--terra-light); opacity: 0; animation: fadeIn 1.2s ease 0.2s forwards; }
+    .hero-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(181,98,42,0.35) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(181,98,42,0.2) 0%, transparent 50%); }
+    .hero-grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(28,28,26,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(28,28,26,0.05) 1px, transparent 1px); background-size: 40px 40px; }
+    .hero-number { position: absolute; bottom: 4rem; right: 4rem; font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 300; color: rgba(181,98,42,0.12); line-height: 1; opacity: 0; animation: fadeIn 1s ease 1s forwards; }
+    .hero-scroll { position: absolute; bottom: 3rem; left: 4rem; display: flex; align-items: center; gap: 0.8rem; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards; }
+    .scroll-line { width: 40px; height: 1px; background: var(--terra-med); animation: expandWidth 1s ease 1.5s forwards; transform-origin: left; transform: scaleX(0); }
 
-    /* SOBRE */
-    .about {
-      padding: 10rem 4rem; display: grid; grid-template-columns: 1fr 2fr;
-      gap: 6rem; max-width: 1200px; margin: 0 auto;
-    }
-    .section-label {
-      font-size: 0.6rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--terra); padding-top: 0.4rem;
-    }
-    .about-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300;
-      line-height: 1.3; margin-bottom: 2rem; color: var(--charcoal);
-    }
+    .about-section { background: var(--terra-soft); }
+    .about { padding: 10rem 4rem; display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terra); padding-top: 0.4rem; }
+    .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.3; margin-bottom: 2rem; color: var(--charcoal); }
     .about-text h2 em { font-style: italic; color: var(--terra); }
-    .about-text p { font-size: 0.8rem; line-height: 2; color: var(--stone); margin-bottom: 1.2rem; }
+    .about-text p { font-size: 0.8rem; line-height: 2; color: #5C3D2E; margin-bottom: 1.2rem; }
     .skills-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
-    .skill-tag {
-      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.4rem 0.9rem; border: 1px solid rgba(181,98,42,0.25);
-      color: var(--stone); transition: all 0.3s;
-    }
+    .skill-tag { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1px solid rgba(181,98,42,0.4); color: #5C3D2E; transition: all 0.3s; }
     .skill-tag:hover { border-color: var(--terra); color: var(--terra); background: var(--terra-pale); }
 
-    /* PROJETOS */
     .projects { padding: 6rem 0; background: #1A1008; }
-    .projects-header {
-      padding: 0 4rem; margin-bottom: 5rem;
-      display: flex; justify-content: space-between; align-items: flex-end;
-    }
-    .projects-header h2 {
-      font-family: 'Marcellus', serif; font-size: clamp(2.5rem, 4vw, 3.5rem);
-      color: var(--terra-pale); font-weight: 400;
-    }
+    .projects-header { padding: 0 4rem; margin-bottom: 5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .projects-header h2 { font-family: 'Marcellus', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--terra-pale); font-weight: 400; }
     .projects-header span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
     .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(181,98,42,0.15); }
-    .project-card {
-      background: #1A1008; padding: 3.5rem;
-      position: relative; overflow: hidden; transition: background 0.4s; cursor: pointer;
-    }
-    .project-card::before {
-      content: ''; position: absolute; inset: 0; background: var(--terra);
-      transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 0;
-    }
+    .project-card { background: #1A1008; padding: 3.5rem; position: relative; overflow: hidden; transition: background 0.4s; cursor: pointer; }
+    .project-card::before { content: ''; position: absolute; inset: 0; background: var(--terra); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 0; }
     .project-card:hover::before { transform: translateY(0); }
     .project-card * { position: relative; z-index: 1; }
     .project-num { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: rgba(181,98,42,0.4); margin-bottom: 3rem; }
     .project-icon { font-size: 2rem; margin-bottom: 1.5rem; }
-    .project-title {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300;
-      color: var(--terra-pale); margin-bottom: 1rem; line-height: 1.2;
-    }
+    .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--terra-pale); margin-bottom: 1rem; line-height: 1.2; }
     .project-desc { font-size: 0.72rem; line-height: 1.8; color: rgba(240,217,192,0.45); margin-bottom: 2.5rem; transition: color 0.3s; }
     .project-card:hover .project-desc { color: rgba(255,255,255,0.9); }
     .project-card:hover .project-title { color: #fff; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .project-tag {
-      font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.3rem 0.7rem; border: 1px solid rgba(181,98,42,0.3);
-      color: rgba(181,98,42,0.7); transition: all 0.3s;
-    }
+    .project-tag { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 0.7rem; border: 1px solid rgba(181,98,42,0.3); color: rgba(181,98,42,0.7); transition: all 0.3s; }
     .project-card:hover .project-tag { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.9); }
-    .project-arrow {
-      position: absolute; bottom: 3rem; right: 3rem; font-size: 1.5rem;
-      color: rgba(181,98,42,0.3); transition: all 0.3s; transform: rotate(-45deg);
-    }
+    .project-arrow { position: absolute; bottom: 3rem; right: 3rem; font-size: 1.5rem; color: rgba(181,98,42,0.3); transition: all 0.3s; transform: rotate(-45deg); }
     .project-card:hover .project-arrow { color: rgba(255,255,255,0.9); transform: rotate(0deg); }
 
-    /* FORMAÇÃO */
     .learning { padding: 10rem 4rem; max-width: 1200px; margin: 0 auto; }
     .learning-header { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; margin-bottom: 5rem; }
     .learning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(181,98,42,0.15); }
@@ -217,42 +87,22 @@
     .progress-fill { height: 100%; background: var(--terra); }
     .progress-label { font-size: 0.6rem; color: var(--stone); margin-top: 0.5rem; text-align: right; }
 
-    /* CONTATO */
-    .contact {
-      padding: 10rem 4rem; text-align: center;
-      background: var(--terra-pale); position: relative; overflow: hidden;
-    }
-    .contact::before {
-      content: 'contato'; position: absolute;
-      font-family: 'Cormorant Garamond', serif; font-size: 18vw; font-weight: 300;
-      color: rgba(181,98,42,0.08); top: 50%; left: 50%;
-      transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
-    }
-    .contact h2 {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; position: relative;
-    }
+    .contact { padding: 10rem 4rem; text-align: center; background: var(--terra-pale); position: relative; overflow: hidden; }
+    .contact::before { content: 'contato'; position: absolute; font-family: 'Cormorant Garamond', serif; font-size: 18vw; font-weight: 300; color: rgba(181,98,42,0.08); top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none; }
+    .contact h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; position: relative; }
     .contact h2 em { font-style: italic; color: var(--terra); }
     .contact p { font-size: 0.8rem; color: var(--stone); margin-bottom: 3rem; position: relative; }
     .contact-links { display: flex; justify-content: center; gap: 2rem; position: relative; }
-    .contact-link {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--charcoal); text-decoration: none; padding-bottom: 0.3rem;
-      border-bottom: 1px solid rgba(181,98,42,0.3); transition: all 0.3s;
-    }
+    .contact-link { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; padding-bottom: 0.3rem; border-bottom: 1px solid rgba(181,98,42,0.3); transition: all 0.3s; }
     .contact-link:hover { color: var(--terra); border-color: var(--terra); }
 
-    footer {
-      padding: 2rem 4rem; background: #1A1008;
-      display: flex; justify-content: space-between; align-items: center;
-    }
+    footer { padding: 2rem 4rem; background: #1A1008; display: flex; justify-content: space-between; align-items: center; }
     footer span { font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(240,217,192,0.2); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes expandWidth { from { transform: scaleX(0); } to { transform: scaleX(1); } }
     .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
       nav { padding: 1.5rem 2rem; } .nav-links { display: none; }
@@ -295,22 +145,25 @@
     <div class="hero-scroll"><div class="scroll-line"></div> scroll</div>
   </section>
 
-  <section class="about" id="sobre">
-    <div class="section-label reveal">sobre</div>
-    <div class="about-text reveal">
-      <h2>Construindo uma<br><em>nova trajetória</em></h2>
-      <p>Brasília, DF. Curso Ciência da Computação na UDF (EAD) e trabalho no varejo enquanto estudo — aproveitando cada intervalo entre clientes para avançar no código.</p>
-      <p>Minha transição para TI foi intencional. O objetivo: entrar no mercado tech como desenvolvedora júnior, com foco em desenvolvimento web com Python.</p>
-      <p>Concluí os dois módulos de Lógica de Programação pelo IFRS (Módulo 1 com 88% e Módulo 2 com 75% — 40h no total), além de diversas disciplinas do curso na UDF. Primeiro app publicado como PWA instalável.</p>
-      <div class="skills-row">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">HTML & CSS</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Prompt Engineering</span>
-        <span class="skill-tag">Lógica de Programação</span>
-        <span class="skill-tag">Git & GitHub</span>
-        <span class="skill-tag">PWA</span>
-        <span class="skill-tag">Banco de Dados</span>
+  <section class="about-section" id="sobre">
+    <div class="about">
+      <div class="section-label reveal">sobre</div>
+      <div class="about-text reveal">
+        <h2>Construindo uma<br><em>nova trajetória</em></h2>
+        <p>Brasília, DF. Curso Ciência da Computação na UDF (EAD) e trabalho no varejo enquanto estudo — aproveitando cada intervalo entre clientes para avançar no código.</p>
+        <p>Minha transição para TI foi intencional. O objetivo: entrar no mercado tech como desenvolvedora júnior, com interesse em desenvolvimento web e cibersegurança.</p>
+        <p>Concluí os dois módulos de Lógica de Programação pelo IFRS (Módulo 1 com 88% e Módulo 2 com 75% — 40h no total) e Python Essentials 1 pela Cisco (30h). Primeiro app publicado como PWA instalável.</p>
+        <div class="skills-row">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">HTML & CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Cibersegurança</span>
+          <span class="skill-tag">Lógica de Programação</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">PWA</span>
+          <span class="skill-tag">Banco de Dados</span>
+        </div>
       </div>
     </div>
   </section>
@@ -321,7 +174,6 @@
       <span>trabalhos selecionados</span>
     </div>
     <div class="projects-grid">
-
       <div class="project-card reveal">
         <div class="project-num">001</div>
         <div class="project-icon">🌿</div>
@@ -335,7 +187,6 @@
         </div>
         <div class="project-arrow">→</div>
       </div>
-
       <div class="project-card reveal">
         <div class="project-num">002</div>
         <div class="project-icon">📊</div>
@@ -349,9 +200,6 @@
         </div>
         <div class="project-arrow">→</div>
       </div>
-
-
-
     </div>
   </section>
 
@@ -363,24 +211,24 @@
           Aprendizado <em style="font-style:italic;color:var(--terra);">contínuo</em>
         </h2>
         <p class="reveal" style="font-size:0.8rem;color:var(--stone);line-height:2;">
-          Trilha atual: Python → HTML/CSS → Flask → portfólio completo → vaga júnior.
+          Trilha atual: Python → HTML/CSS → Cibersegurança → portfólio completo → vaga júnior.
         </p>
       </div>
     </div>
     <div class="learning-grid reveal">
       <div class="learning-item">
-        <div class="learning-status">● Em andamento</div>
-        <div class="learning-title">Python Essentials</div>
-        <div class="learning-source">Cisco Networking Academy</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
-        <div class="progress-label">35%</div>
+        <div class="learning-status">✓ Concluído</div>
+        <div class="learning-title">Python Essentials 1</div>
+        <div class="learning-source">Cisco Networking Academy — 30h · Concluído 05/04/2026</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+        <div class="progress-label">100%</div>
       </div>
       <div class="learning-item">
         <div class="learning-status">● Em andamento</div>
-        <div class="learning-title">CS50P — Python</div>
-        <div class="learning-source">Harvard / edX</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
-        <div class="progress-label">20%</div>
+        <div class="learning-title">Trilha Analista de Cibersegurança Júnior</div>
+        <div class="learning-source">Cisco Networking Academy — 120h · Trilha Profissionalizante</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div>
+        <div class="progress-label">Em andamento</div>
       </div>
       <div class="learning-item">
         <div class="learning-status">✓ Concluído</div>
@@ -391,10 +239,10 @@
       </div>
       <div class="learning-item">
         <div class="learning-status">● Em andamento</div>
-        <div class="learning-title">1º Semestre — Ciências da Computação</div>
-        <div class="learning-source">UDF — Bacharelado EAD</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
-        <div class="progress-label">Em andamento</div>
+        <div class="learning-title">Bacharelado em Ciências da Computação</div>
+        <div class="learning-source">UDF — EAD · 1º Semestre</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div>
+        <div class="progress-label">1º semestre de 8</div>
       </div>
     </div>
   </section>
@@ -402,13 +250,10 @@
   <section class="contact" id="contato">
     <h2 class="reveal">Vamos <em>conversar?</em></h2>
     <p class="reveal">Aberta a oportunidades júnior e conexões na área de tech.</p>
-   <div class="contact-links reveal">
-    <a href="https://instagram.com/e._brito" class="contact-link" target="_blank">Instagram</a>
-    <a href="https://github.com/eduardabritox-lab" class="contact-link" target="_blank">GitHub</a>
-    <a href="mailto:eduardadev.cs@gmail.com" class="contact-link">E-mail</a>
-
-</div>
-
+    <div class="contact-links reveal">
+      <a href="https://instagram.com/e._brito" class="contact-link" target="_blank">Instagram</a>
+      <a href="https://github.com/eduardabritox-lab" class="contact-link" target="_blank">GitHub</a>
+      <a href="mailto:eduardadev.cs@gmail.com" class="contact-link">E-mail</a>
     </div>
   </section>
 
@@ -417,7 +262,7 @@
     <span>Brasília, DF — Brasil</span>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     var cursor = document.getElementById('cursor');
     var ring = document.getElementById('cursorRing');
     var mx = 0, my = 0, rx = 0, ry = 0;
@@ -436,4 +281,12 @@
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry, i) {
         if (entry.isIntersecting) {
-          setTimeout(function() { entry.target.classList.add('visible');
+          setTimeout(function() { entry.target.classList.add('visible'); }, i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(function(el) { observer.observe(el); });
+  </script>
+</body>
+</html>
